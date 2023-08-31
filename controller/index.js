@@ -1,8 +1,9 @@
-const express = require('express')
-const routes = express.Router
-const bodyParser = require('body-parser')
-const {users} = require('../model')
-
+const express = require('express');
+const routes = express.Router();
+const bodyParser = require('body-parser');
+const {users,products} = require('../model');
+// console.log(users);
+// return;
 routes.get('/users', (req, res)=>{
     users.fetchUsers(req, res)
 });
@@ -49,5 +50,5 @@ routes.get("/products", (req, res) => {
 module.exports = {
     express,
     routes,
-    verifyAToken
+    // verifyAToken
 }

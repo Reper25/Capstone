@@ -1,5 +1,5 @@
-const users = require('./users')
-const products = require('./products')
+const { Users }  = require('./users')
+const { Products } = require('./products')
 
 module.exports = {
     users: new Users(),

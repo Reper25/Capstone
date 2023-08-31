@@ -1,9 +1,9 @@
-const db = require('../config')
+const db = require('../config/index.js') ;
 
 class Products{
     fetchProducts(req, res){
         const query = `
-            SELECT prodID, prodName, quantity, Price, Category, prodUrl, hoveredProdUrl, prodDesc
+            SELECT prodID, prodName, quantity, amount , category, prodUrl, prodDesc
             FROM Products
         `
         db.query(query, (err, data) => {
@@ -16,7 +16,7 @@ class Products{
     }
     fetchProduct(req, res){
         const query = `
-            SELECT prodID, prodName, quantity, Price, Category, prodUrl, hoveredProdUrl, prodDesc
+            SELECT prodID, prodName, quantity, amount, category, prodUrl, prodDesc
             FROM Products 
             WHERE prodID = ${req.params.prodID}
         `

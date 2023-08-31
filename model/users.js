@@ -2,8 +2,8 @@ const db =require('../config')
 class Users{
     fetchUsers(req, res) {
         const query = `
-        SELECT userID, firstName, lastName, 
-        gender, userDOB, emailAdd, userRole,profileUrl
+        SELECT userID, firstName, lastName, userAge, 
+        gender, userPass, emailAdd, userRole,userProfile
         FROM Users;
         `
         db.query(query, (err, results)=>{
@@ -16,8 +16,8 @@ class Users{
     }
     fetchUser(req, res) {
         const query = `
-        SELECT userID, firstName, lastName, 
-        gender, userDOB, emailAdd, userRole, profileUrl
+        SELECT userID, firstName, lastName, userAge,
+        gender, userPass, emailAdd, userRole, userProfile
         FROM Users
         WHERE userID = ${req.params.id};
         `
@@ -31,4 +31,4 @@ class Users{
 
     }
 }
-module.exports = Users
+module.exports = { Users }  
