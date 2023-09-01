@@ -22,7 +22,7 @@ export default createStore({
     },
     setProducts(state, products) {
       state.products = products;
-      console.log(products)
+      
     },
     setSelectedProduct(state, product) {
       state.selectedProduct = product
@@ -43,7 +43,7 @@ export default createStore({
   actions: {
     async fetchUsers(context) {
       try {
-        const { data } = await axios.get(`${miniURL}Users`);
+        const { data } = await axios.get(`${miniURL}users`);
         context.commit("setUsers", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -51,7 +51,7 @@ export default createStore({
     },
     async fetchUser(context) {
       try {
-        const { data } = await axios.get(`${miniURL}Users`);
+        const { data } = await axios.get(`${miniURL}user`);
         context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -59,7 +59,7 @@ export default createStore({
     },
     async createUser(context) {
       try{
-        const { data } = await axios.post(`${miniURL}Users`)
+        const { data } = await axios.post(`${miniURL}user`)
         context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -67,7 +67,7 @@ export default createStore({
     },
     async updateUser(context) {
       try{
-        const { data } = await axios.patch(`${miniURL}Users`)
+        const { data } = await axios.patch(`${miniURL}user`)
         context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -75,7 +75,7 @@ export default createStore({
     },
     async deleteUser(context) {
       try{
-        const { data } = await axios.delete(`${miniURL}Users`)
+        const { data } = await axios.delete(`${miniURL}user`)
         context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -83,7 +83,7 @@ export default createStore({
     },
     async fetchProducts(context) {
       try{
-        let products = await (await fetch(" ")).json()
+        let products = await (await fetch("https://sixth-zp4e.onrender.com/products")).json()
         if (products) {
           context.commit ("setProducts", products)
         } else {
@@ -93,6 +93,25 @@ export default createStore({
       catch(e) {
         console.error(error)
       }
+    }
+  },
+  async updateProduct(context, payload) {
+    console.log(payload)
+    try {
+      const res = await axios.patch(`${miniURL}product/${payload.product_id}`, payload);
+      const { msg, err } = await res.data;
+      console.log(msg, err);
+      if (err) {
+        console.log("An error has occured: ", err);
+        context.commit("setMsg", err);
+      }
+      if (msg) {
+        context.dispatch("fetchProducts")
+        context.commit("setProduct", msg);
+        context.commit("setMsg", "Successfully updated product.");
+      }
+    } catch (e) {
+      context.commit("setMsg", e);
     }
   },
   async addProduct(context, payload) {
