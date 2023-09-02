@@ -1,8 +1,9 @@
 import { createStore } from 'vuex'
 import axios from "axios";
-const miniURL = "https://capstone2-0put.onrender.com";
-export default createStore({
-  state: {
+const miniURL = "https://capstone-p9rw.onrender.com/";
+
+export default createStore({  
+    state: {
     users: null,
     user: null,
     products: null,
@@ -82,19 +83,13 @@ export default createStore({
       }
     },
     async fetchProducts(context) {
-      try{
-        let products = await (await fetch("https://sixth-zp4e.onrender.com/products")).json()
-        if (products) {
-          context.commit ("setProducts", products)
-        } else {
-          alert("error")
-        }
+      try {
+        const { data } = await axios.get(`${miniURL}Products`);
+        context.commit("setProducts", data.results);
+      } catch (e) {
+        context.commit("setMsg", "an error occurred");
       }
-      catch(e) {
-        console.error(error)
-      }
-    }
-  },
+    },
   async updateProduct(context, payload) {
     console.log(payload)
     try {
@@ -130,4 +125,4 @@ export default createStore({
       }
     },
   },
-);
+});
