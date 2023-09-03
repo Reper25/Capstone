@@ -30,7 +30,7 @@
             this.$store.dispatch('fetchProducts')
         },
         methods: {
-            singleProduct(product_id) {
+            singleProduct(prodID) {
                 const chosenProd = this.products.find (
                     (product) => product.prodID === prodID
                 );

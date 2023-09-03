@@ -6,7 +6,7 @@ export default createStore({
     state: {
     users: null,
     user: null,
-    products: null,
+    Products: null,
     product: null,
     spinner: null,
     token: null,
@@ -21,8 +21,8 @@ export default createStore({
     setUser(state, user) {
       state.user = user;
     },
-    setProducts(state, products) {
-      state.products = products;
+    setProducts(state, Products) {
+      state.products = Products;
       
     },
     setSelectedProduct(state, product) {
@@ -93,7 +93,7 @@ export default createStore({
   async updateProduct(context, payload) {
     console.log(payload)
     try {
-      const res = await axios.patch(`${miniURL}product/${payload.product_id}`, payload);
+      const res = await axios.patch(`${miniURL}product/${payload.prodID}`, payload);
       const { msg, err } = await res.data;
       console.log(msg, err);
       if (err) {
