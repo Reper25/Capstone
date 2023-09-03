@@ -47,7 +47,19 @@ routes.get("/products", (req, res) => {
   routes.delete("/product/:prodID", (req, res) => {
     products.removeProduct(req, res)
   });
-
+  exports.profile = (req, res, next) => {
+    const token = req.header("Authorization");
+    if (!token) {
+      return res.status(401).json({
+        message: "Access denied. Token not provided",
+      });
+    }
+    const decUser = verifyAToken(token);
+    if (!decUser) {
+      return res.status(403).json({ message: "Invalid token" });
+    }
+    res.json({ message: "User profile retrieved successfully", user: decUser });
+  };
 module.exports = {
     express,
     routes,
