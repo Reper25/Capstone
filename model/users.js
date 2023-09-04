@@ -120,7 +120,7 @@ class Users{
           }
         });
       }
-      removeUser(req, res) {
+      deleteUser(req, res) {
         const query = `
                 DELETE FROM Users WHERE userID = ${req.params.id}
             `;
