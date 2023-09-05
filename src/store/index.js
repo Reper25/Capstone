@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import axios from "axios";
-const miniURL = "https://capstone-p9rw.onrender.com/";
+const miniURL = "https://capstone-nydl.onrender.com/";
 
 export default createStore({  
     state: {
@@ -21,8 +21,8 @@ export default createStore({
     setUser(state, user) {
       state.user = user;
     },
-    setProducts(state, Products) {
-      state.products = Products;
+    setProducts(state, products) {
+      state.products = products;
       
     },
     setSelectedProduct(state, product) {
@@ -44,7 +44,7 @@ export default createStore({
   actions: {
     async fetchUsers(context) {
       try {
-        const { data } = await axios.get(`${miniURL}users`);
+        const { data } = await axios.get(`${miniURL}Users`);
         context.commit("setUsers", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
@@ -66,7 +66,7 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async updateUser(context) {
+    async updateUser(context, userID) {
       try{
         const { data } = await axios.patch(`${miniURL}user`)
         context.commit("setUser", data.results);
@@ -74,10 +74,16 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async deleteUser(context) {
+    async deleteUser(context, userID, payload) {
       try{
-        const { data } = await axios.delete(`${miniURL}user`)
-        context.commit("setUser", data.results);
+        const { data } = await axios.delete(`${miniURL}user/${userID}`, payload);
+        if(data.msg === "User record deleted successfully") {
+          return true
+        }
+        else {
+          return false
+        }
+        // context.commit("setUser", data.results);
       } catch (e) {
         context.commit("setMsg", "an error occured");
       }
@@ -119,6 +125,25 @@ export default createStore({
           context.commit("setSpinner", false);
         } else {
           context.commit("setMsg", msg);
+        }
+      } catch (e) {
+        context.commit("setMsg", "an error occured");
+      }
+    },
+    async deleteProduct(context, prodID) {
+      console.log("reached");
+      try {
+        const { res } = await axios.delete(`${miniURL}product/${prodID}`);
+        const { msg, err } = await res.data;
+        if (err) {
+          alert("an error has occured, please try again");
+        }
+        if (msg) {
+          context.dispatch("fetchProducts")
+          context.commit("setProduct", msg);
+          context.commit("setSpinner", false);
+        } else {
+          context.commit("setMsg", "An error occured");
         }
       } catch (e) {
         context.commit("setMsg", "an error occured");
