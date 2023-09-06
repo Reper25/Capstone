@@ -90,7 +90,7 @@ class Users{
                 res.json({
                   msg: "Logged in successfully",
                   token,
-                  cResult: cResult[0],
+                  cResult: result[0],
                 });
               } else {
                 res.json({
@@ -132,7 +132,7 @@ class Users{
             });
           } else {
             res.json({
-              status: res.statusCode,
+              status: res.statusCode(500),
               err,
               msg: "An error occured ",
             });
