@@ -65,9 +65,9 @@ class Users{
                 SELECT firstName, lastName,
                 userAge, gender, userRole, emailAdd,
                 userPass, userProfile FROM Users
-                WHERE emailAdd = ?
+                WHERE emailAdd = '${emailAdd}'
             `;
-        db.query(query, [emailAdd], async (err, result) => {
+        db.query(query, async (err, result) => {
           if (err) {
             res.json({
               status: res.statusCode,
