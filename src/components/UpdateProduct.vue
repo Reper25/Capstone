@@ -39,19 +39,35 @@
                 type="text"
                 v-model="editingProduct.prodName"
               />
-            
+            <br>
               <label>Product price:</label>
               <input
                 placeholder="price"
                 type="number"
                 v-model="editingProduct.amount"
               />
+              <br>
+              <label>Quantity:</label>
+              <input
+                placeholder="quantity"
+                type="number"
+                v-model="editingProduct.quantity"
+              />
+              <br>
               <label>Product category:</label>
               <input
                 placeholder="category"
                 type="text"
                 v-model="editingProduct.category"
               />
+              <br>
+              <label>Description:</label>
+              <input
+                placeholder="image"
+                type="text"
+                v-model="editingProduct.prodDesc"
+              />
+              <br>
               <label>Product image:</label>
               <input
                 placeholder="image"
@@ -87,15 +103,12 @@
     data() {
       return {
         editingProduct: {
-          ...this.product,
-        },
-        editingProductID: null,
-        model: {
           product: {
             prodName: "",
-            amount: 0,
-            amount: "",
+            quantity: null,
+            amount: null,
             category: "",
+            description: "" ,
             prodUrl: "",
           },
         },
@@ -118,8 +131,17 @@
       updateProduct(prodID) {
         this.$store
           .dispatch("updateProduct", {
-            product_id: prodID,
+            prodID: prodID,
             ...this.editingProduct,
+          })
+          .then(() => {
+            console.log("products edited success");
+            setTimeout(() => {
+              location.reload();
+            }, 500)
+          })
+          .catch((err) => {
+            console.error("Error while updating, please try again", err)
           })
       },
     },

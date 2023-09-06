@@ -23,6 +23,12 @@
             <li class="nav-item m-2">
                 <router-link to="/admin">Admin</router-link>
             </li>
+            <li class="nav-item m-2">
+                <router-link to="/login">login</router-link>
+            </li>
+            <li class="nav-item m-2">
+                <router-link to="/register">register</router-link>
+            </li>
            </ul>
         </div>
       </div>

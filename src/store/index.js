@@ -1,6 +1,11 @@
 import { createStore } from 'vuex'
 import axios from "axios";
 const miniURL = "https://capstone-nydl.onrender.com/";
+import sweet from 'sweetalert'
+import {useCookies} from 'vue3-cookies'
+const {cookies} = useCookies()
+import router from '@/router'
+import authenticateUser from '@/services/authenticateUser';
 
 export default createStore({  
     state: {
@@ -147,6 +152,61 @@ export default createStore({
         }
       } catch (e) {
         context.commit("setMsg", "an error occured");
+      }
+    },
+    //register 
+    async addUser(context, payload) {
+      try {
+        const { msg } = (await axios.post(`${miniURL}register`, payload)).data;
+        if (msg) {
+          sweet({
+            title: "Registration",
+            text: msg,
+            icon: "success",
+            timer: 4000,
+          });
+          context.dispatch("fetchUsers");
+          router.push({ name: "login" });
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 4000
+          });
+        }
+      } catch (e) {
+        context.commit(console.log(e))
+      }
+    },
+    //login
+    async login(context, payload) {
+      try {
+        const { msg, token, cResult } = (
+          await axios.post(`${miniURL}login`, payload)
+        ).data;
+        console.log( msg, token, cResult);
+        if (cResult) {
+          context.commit("setUser", { cResult, msg });
+          cookies.set("LegitUser", { msg, token, cResult });
+          authenticateUser.applyToken(token);
+          sweet({
+            title: msg,
+            text: "Welcome back",
+            icon: "success",
+            timer: 4000,
+          });
+          router.push({ name: "home" });
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 4000,
+          });
+        }
+      } catch (e) {
+        context.commit(console.log((e)));
       }
     },
   },
