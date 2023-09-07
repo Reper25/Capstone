@@ -37,21 +37,33 @@
                 required
               />
               <input
+                placeholder="Category"
+                type="text"
+                v-model="model.product.category"
+                required
+              />
+              <input
                 placeholder="amount"
                 type="number"
                 v-model="model.product.amount"
                 required
               />
               <input
-                placeholder="category"
+                placeholder="quantity"
                 type="text"
-                v-model="model.product.category"
+                v-model="model.product.quantity"
                 required
               />
               <input
                 placeholder="product image"
                 type="text"
                 v-model="model.product.prodUrl"
+                required
+              />
+              <input
+                placeholder="Description"
+                type="text"
+                v-model="model.product.prodDesc"
                 required
               />
             </div>
@@ -76,9 +88,11 @@
         model: {
           product: {
             prodName: "",
-            amount: "",
             category: "",
+            quantity: "",
+            amount: "",
             prodUrl: "",
+            prodDesc: "",
           },
         },
       };

@@ -53,10 +53,10 @@
       <h1>products</h1>
       <AddProducts />
       <div class="sort-dropdown">
-        <button class="btn" @click="toggleSortDirection">
-          Filter by: {{ sort === "asc" ? "ascending" : "descending " }}
-        </button>
-      </div>
+    <button class="btn" @click="toggleSortDirection('price')">
+      Sort by Price: {{ sort === "asc" ? "ascending" : "descending" }}
+    </button>
+  </div>
       <addProduct />
       <div class="table-responsive">
         <table class="table">
@@ -109,11 +109,13 @@
 import Spinner from "../components/SpinnerComp.vue";
 import addProduct from "../components/AddProduct.vue";
 import updateProduct from "../components/UpdateProduct.vue";
+import updateUsers from "../components/UpdateUsers.vue"
 export default {
   components: {
     Spinner,
     addProduct,
     updateProduct,
+    updateUsers,
   },
   data() {
     return {
@@ -137,7 +139,12 @@ export default {
     },
     filteredProducts() {
       let filtered = [...this.products];
-      if (this.sortBy === "name") {
+      if (this.sortBy === "price") {
+        filtered = filtered.sort(
+          (a, b) =>
+            (this.sort === "asc" ? 1 : -1) * (a.amount - b.amount)
+        );
+      } else if (this.sortBy === "name") {
         filtered = filtered.sort(
           (a, b) =>
             a.prodName.localeCompare(b.prodName) *
@@ -164,10 +171,13 @@ export default {
         }, 500);
       }
     },
-    toggleSortDirection() {
-      console.log("reached");
-      this.sortBy = 'name'
-      this.sort = this.sort === "asc" ? "desc" : "asc";
+    toggleSortDirection(column) {
+      if (this.sortBy === column) {
+        this.sort = this.sort === "asc" ? "desc" : "asc";
+      } else {
+        this.sortBy = column;
+        this.sort = "asc"; // Initial sort direction
+      }
     },
     async deleteUser(userID) {
       if (confirm("Are you sure you want to delete this User?")) {

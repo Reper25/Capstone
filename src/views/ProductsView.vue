@@ -3,8 +3,36 @@
         <div class="row">
             <h2 class="class-display2 text-white">Menu</h2>
         </div>
+
+        <div class="navigation">
+    <div class="sort">
+      <label for="search">Sort by Price</label>
+      <select
+        name="sort"
+        id="sort"
+        v-model="selectedSort"
+        @change="sortProducts"
+      >
+        <option value="lowest" id="lowest">Lowest</option>
+        <option value="highest" id="highest">Highest</option>
+      </select>
+    </div>
+    <div class="search">
+      <div class="search-bar">
+
+        <input
+          type="text"
+          class="type-s"
+          placeholder="Name of item"
+          v-model="searchInput"
+        />
+         
+      </div>
+    </div>
+  </div>
+
         <div class="row justify-content-center gap-3" v-if="products">
-            <div class="col" v-for="product of products" :key="product">
+            <div class="col" v-for="product of filteredProducts" :key="product.prodID">
                 <div class="card" style="width: 18rem;">
                     <img :src="product.prodUrl" class="card-img-top img-fluid" :alt="prodName">
                     <div class="card-body">
@@ -21,10 +49,24 @@
 </template>
 <script>
     export default {
+        data() {
+  return {
+    searchInput: "",
+  };
+},
         computed: {
             products() {
                 return this.$store.state.products
-            }
+            },  
+  filteredProducts() {
+    const searchQuery = this.searchInput.toLowerCase();
+    return this.products.filter(
+      (product) =>
+        product.prodName.toLowerCase().includes(searchQuery) ||
+        product.category.toLowerCase().includes(searchQuery)
+    );
+ 
+},
         },
         mounted() {
             this.$store.dispatch('fetchProducts')
@@ -36,7 +78,22 @@
                 );
                 this.$store.commit("setSelectedProduct", chosenProd);
                 this.$router.push({name:"SingleProduct", params: {prodID: prodID}})
-            }
+            },
+            sortProducts() {
+      if (this.selectedSort === "lowest") {
+        this.products.sort((a, b) => a.amount - b.amount);
+      } else if (this.selectedSort === "highest") {
+        this.products.sort((a, b) => b.amount - a.amount);
+      }
+    },
+    filterProducts() {
+      const searchQuery = this.searchInput.toLowerCase();
+      this.products = this.sortedProducts.filter(
+        (product) =>
+          product.prodName.toLowerCase().includes(searchQuery) ||
+          product.Category.toLowerCase().includes(searchQuery)
+      );
+    },
         }
     }
 </script>
