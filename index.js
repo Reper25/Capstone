@@ -7,7 +7,7 @@ const port = +process.env.PORT || 3000;
 const errorHandling = require('./middleware/ErrorHandling');
 
 app.use(
-    express.static('./static/html/index.html'),
+   '/', express.static(path.join(__dirname , './static/html/')),
     express.urlencoded({
         extended: false
     }),
@@ -15,7 +15,11 @@ app.use(
     cors(),
     routes
 )
-
+// this next line will show my html page
+// app.use('/',express.static(path.join(__dirname , './static/html/')));
+app.get( '/', (req, res) => {
+    res.sendFile('./static/html/index.html');
+})
 app.use((err, req, res, next) => {
     console.log(err);
     err.statusCode = err.statusCode || 500;
