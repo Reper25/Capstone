@@ -29,6 +29,9 @@
             <li class="nav-item m-2">
                 <router-link to="/register">register</router-link>
             </li>
+            <li class="nav-item m-2">
+                <router-link to="/cart">cart</router-link>
+            </li>
            </ul>
         </div>
       </div>

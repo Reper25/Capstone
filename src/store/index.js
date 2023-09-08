@@ -6,6 +6,7 @@ import {useCookies} from 'vue3-cookies'
 const {cookies} = useCookies()
 import router from '@/router'
 import authenticateUser from '@/services/authenticateUser';
+const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
 
 export default createStore({  
     state: {
@@ -17,6 +18,8 @@ export default createStore({
     token: null,
     selectedProduct: null,
     msg: null,
+    cart: [],
+    cart: storedCart,
   },
   getters: {},
   mutations: {
@@ -44,6 +47,12 @@ export default createStore({
     },
     setMsg(state, msg) {
       state.msg = msg;
+    },
+    addToCart(state, product) {
+      state.cart.push(product);
+    },
+    removeFromCart(state, productIndex) {
+      state.cart.splice(productIndex, 1);
     },
   },
   actions: {
@@ -209,5 +218,14 @@ export default createStore({
         context.commit(console.log((e)));
       }
     },
+    // Action to add a product to the cart
+  async addToCartAction(context, product) {
+    context.commit('addToCart', product);
+    localStorage.setItem('cart', JSON.stringify(context.state.cart));
+  },
+  // Action to remove a product from the cart by index
+  async removeFromCartAction(context, productIndex) {
+    context.commit('removeFromCart', productIndex);
+  },
   },
 });

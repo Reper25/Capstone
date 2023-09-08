@@ -38,7 +38,8 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ product.prodName }} <br> R {{ product.amount }}</h5>
                       <p class="card-text"><span>Category: {{ product.category }}</span></p>
-                      <button class="btn btn-primary" @click="singleProduct(product.prodID)">view more</button>
+                      <button class="btn btn-primary mx-1" @click="singleProduct(product.prodID)">view more</button>
+                      <button class="btn btn-primary" @click="addToCart(product)">Add to Cart</button>
                     </div>
                   </div>
             </div>
@@ -93,6 +94,9 @@
           product.prodName.toLowerCase().includes(searchQuery) ||
           product.Category.toLowerCase().includes(searchQuery)
       );
+    },
+    addToCart(product) {
+      this.$store.dispatch('addToCartAction', product);
     },
         }
     }
