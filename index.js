@@ -7,7 +7,7 @@ const port = +process.env.PORT || 3000;
 const errorHandling = require('./middleware/ErrorHandling');
 
 app.use(
-    express.static('./static'),
+    express.static('./static/html/index.html'),
     express.urlencoded({
         extended: false
     }),
