@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="gtr">
         <form class="form" @submit.prevent = "register">
             <div class="container">
               <p class="title">Register to open an Account.</p>
@@ -78,5 +78,7 @@
 </script>
 
 <style scoped>
-
+.gtr{
+  height: 70vh;
+}
 </style>

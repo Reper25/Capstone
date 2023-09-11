@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="opp">
       <h1>Your Cart <i class="bi bi-basket"></i></h1>
       <center>
         <div class="table-responsive">
@@ -66,5 +66,8 @@
   <style scoped>
   img{
     width: 15%;
+  }
+  .opp{
+    height: 70vh;
   }
   </style>

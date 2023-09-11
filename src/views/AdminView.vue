@@ -43,9 +43,9 @@
               </button>
             </td>
           </tr>
-          <tr v-else>
-            <Spinner />
-          </tr>
+          <div v-else>
+            <Spinner/>
+            </div>
         </tbody>
       </table>
     </div>
@@ -95,9 +95,9 @@
                 </button>
               </td>
             </tr>
-            <tr v-else>
-              <Spinner />
-            </tr>
+            <div v-else class="row">
+          <Spinner/>
+        </div>
           </tbody>
         </table>
       </div>
@@ -206,10 +206,4 @@ export default {
   background-color: #f7f4f1;
 }
 
-/* .sort-dropdown{
-  display: flex;
-  justify-content: space-between;
-} */
-
-
-</style>
+</style>  

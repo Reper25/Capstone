@@ -45,11 +45,16 @@
             </div>
         </div>
         <div v-else class="row">
+          <Spinner/>
         </div>
     </div>
 </template>
 <script>
+import Spinner from '../components/SpinnerComp.vue'
     export default {
+      components:{
+        Spinner
+      },
         data() {
   return {
     searchInput: "",
