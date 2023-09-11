@@ -17,13 +17,6 @@
         <p>frontend</p>
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="https://i.postimg.cc/Y99WGjJY/C12-Tara-Snell-2.jpg" class="d-block w-auto" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Tara robin Snell</h5>
-        <p>Backend</p>
-      </div>
-    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

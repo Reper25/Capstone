@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container cats ">
+        <div class="row justify-content-center my-5">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Log In</div>
@@ -79,5 +79,9 @@ export default {
 
 
 <style scoped>
+.cats{
+  height: 70vh;
+}
+
 
 </style>
