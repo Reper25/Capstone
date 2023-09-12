@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="col" v-if="user">
-          <h1>Welcome Back To Your Profile</h1>
+          <h1>Welcome Back To Your Profile </h1>
           <img :src="user.userProfile" class="card-img-top img-fluid" :alt="user.firstName">
           <div class="body">
             <br>
@@ -20,6 +20,7 @@
             <br>
           </div>
       </div>
+      <button class="btn" >Edit User</button>
       <button class="btn" @click.prevent="LogOut">Logout</button>
     </div>
   </template>
@@ -50,6 +51,12 @@ export default {
             }
             router.push({ name: "login"});
         },
+        filter(data){
+            if(this.category){
+               const dt = data.filter(item => item.category.includes(this.category))
+                this.$emit("apply-filter", dt)
+            }
+        }
     },
     mounted(){
         this.$store.dispatch("fetchUser")

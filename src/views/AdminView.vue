@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Users</h1>
-    <addUser />
+   <AddUser/>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -106,16 +106,18 @@
 </template>
 
 <script>
+import AddUser from "@/components/AddUser.vue";
 import Spinner from "../components/SpinnerComp.vue";
 import addProduct from "../components/AddProduct.vue";
 import updateProduct from "../components/UpdateProduct.vue";
-import updateUsers from "../components/UpdateUsers.vue"
+import updateUsers from "../components/UpdateUsers.vue";
 export default {
   components: {
     Spinner,
     addProduct,
     updateProduct,
     updateUsers,
+    AddUser
   },
   data() {
     return {

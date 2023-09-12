@@ -4,6 +4,21 @@
             <h2 class="class-display2 text-white">Menu</h2>
         </div>
 
+        <div class="row">
+                    <label for="Categories" class="my-1">Filter by: Artist</label>
+                </div>
+                <div class="row">
+                    <select v-model="artist" id="categories" name="Categories">
+                    <option value="sneakers">sneakers</option>
+                    <option value="hoodies">hoodies</option>
+                    <option value="Sanele Matsolo">Sanele Matsolo</option>
+                </select>
+                </div>
+
+                <div class="col-sm-2 mt-4">
+                <button class="fw-bold" @click="filter(products)">Filter</button>
+            </div>
+
         <div class="navigation">
     <div class="sort">
       <label for="search">Sort by Price</label>
@@ -17,6 +32,8 @@
         <option value="highest" id="highest">Highest</option>
       </select>
     </div>
+
+    
     <div class="search">
       <div class="search-bar">
 

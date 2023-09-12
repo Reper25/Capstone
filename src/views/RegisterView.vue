@@ -71,7 +71,7 @@
         },
         methods: {
             register (){
-                this.$store.dispatch('addUser', this.payload)
+                this.$store.dispatch('regUser', this.payload)
             }
         }
     }

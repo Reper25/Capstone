@@ -80,12 +80,19 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
-    async updateUser(context, userID) {
-      try{
-        const { data } = await axios.patch(`${miniURL}user`)
-        context.commit("setUser", data.results);
-      } catch (e) {
-        context.commit("setMsg", "an error occured");
+    async updateUser(context, payload) {
+      try {
+        const res = await axios.put(`${baseUrl}user/${payload.userID}`, payload)
+        console.log('response:', res);
+        alert ('User was edited')
+        let { results, err } = await res.data;
+        if (results) {
+          context.commit('setuser', results[0])
+        } else {
+          context.commit('setResponse', err)
+        }
+      } catch(e) {
+        console.error(e);
       }
     },
     async deleteUser(context, userID, payload) {
@@ -164,7 +171,7 @@ export default createStore({
       }
     },
     //register 
-    async addUser(context, payload) {
+    async regUser(context, payload) {
       try {
         const { msg } = (await axios.post(`${miniURL}register`, payload)).data;
         if (msg) {
@@ -176,6 +183,30 @@ export default createStore({
           });
           context.dispatch("fetchUsers");
           router.push({ name: "login" });
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 4000
+          });
+        }
+      } catch (e) {
+        context.commit(console.log(e))
+      }
+    },
+    //add user
+    async addUser(context, payload) {
+      try {
+        const { msg } = (await axios.post(`${miniURL}register`, payload)).data;
+        if (msg) {
+          sweet({
+            title: "User Added Succesfully",
+            text: msg,
+            icon: "success",
+            timer: 4000,
+          });
+          context.dispatch("fetchUsers");
         } else {
           sweet({
             title: "Error",
