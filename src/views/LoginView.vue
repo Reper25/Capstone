@@ -34,9 +34,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Log In
                                 </button>
-                                <a href="#" class="btn btn-link">
-                                    Forgot Your Password?
-                                </a>
                             </div>
                     </form>
                     </div>

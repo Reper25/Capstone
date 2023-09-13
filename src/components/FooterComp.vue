@@ -1,5 +1,5 @@
 <template>
-    <footer class=" text-white text-center text-lg-start">
+    <footer class=" text-black text-center text-lg-start">
   <!-- Grid container -->
   <div class="container p-4">
     <!--Grid row-->
@@ -22,16 +22,16 @@
 
         <ul class="list-unstyled mb-0">
           <li>
-            <a href="#!" class="text-white">Link 1</a>
+            <a href="#!" class="text-black">Link 1</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Link 2</a>
+            <a href="#!" class="text-black">Link 2</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Link 3</a>
+            <a href="#!" class="text-black">Link 3</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Link 4</a>
+            <a href="#!" class="text-black">Link 4</a>
           </li>
         </ul>
       </div>
@@ -43,16 +43,16 @@
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!" class="text-white">Link 1</a>
+            <a href="#!" class="text-black">Link 1</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Link 2</a>
+            <a href="#!" class="text-black">Link 2</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Link 3</a>
+            <a href="#!" class="text-black">Link 3</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Link 4</a>
+            <a href="#!" class="text-black">Link 4</a>
           </li>
         </ul>
       </div>
@@ -73,6 +73,6 @@ export default{
 
 <style scoped>
 footer {
-  background: #202020!important;
+  background: #FFDBC3!important;
 }
 </style>

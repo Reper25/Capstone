@@ -50,7 +50,7 @@
       </table>
     </div>
     <div>
-      <h1>products</h1>
+      <h1>Products</h1>
       <AddProducts />
       <div class="sort-dropdown">
     <button class="btn" @click="toggleSortDirection('price')">

@@ -27,11 +27,6 @@
                 oninput="this.setCustomValidity('')">
               </div>
               <div class="input">
-                <label class="input_label" for="Role_field"><i class="bi bi-admin-user"></i><i class="bi bi-admin-user"></i> Roles</label>
-                <input v-model="payload.userRole" placeholder="UserRole" title="role" name="name" type="text" class="input_field" id="Role_field" required  oninvalid="this.setCustomValidity('Please Enter Your User Role')"
-                oninput="this.setCustomValidity('')">
-              </div>
-              <div class="input">
                 <label class="input_label" for="Image_field"><i class="bi bi-camera-video"></i> Image</label>
                 <input v-model="payload.userProfile" placeholder="URL" name="name" type="text" class="input_field" id="Image_field">
               </div>
@@ -61,7 +56,6 @@
                     lastName: "",
                     userAge: null,
                     gender: "",
-                    userRole: "",
                     emailAdd:"",
                     userPass: "",
                     userProfile: "https://i.postimg.cc/3rZ0H0D8/profile-Image.png"

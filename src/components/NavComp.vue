@@ -2,7 +2,7 @@
     <div>
    <nav class="navbar navbar-expand-lg sticky-bottom">
       <div class="container-fluid">
-        <router-link to="/"><img src="https://i.postimg.cc/6p9C3Sws/food-logo-removebg-preview.png" alt="LOGO" loading="lazy" class="logo"></router-link>
+        <router-link to="/"><img src="https://i.postimg.cc/4yMCrmmK/Screenshot-2023-09-13-141248-removebg-preview.png" alt="LOGO" loading="lazy" class="logo"></router-link>
         <button class="navbar-toggler bg-light food" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,21 +51,22 @@ export default{
 <style scoped>
 .navbar{
   z-index: 2;
-background: #202020 !important;
+background: #FFDBC3 !important;
 }
 nav ul li a {
-  color: white; /* Change this to the desired color */
+  color: black; /* Change this to the desired color */
 }
 nav ul li a:hover {
-  color: #FFC107; /* Color on hover */
+  color: #5C4B99; /* Color on hover */
 }
 .food{
-  color: white;
+  color: black;
 }
 .food:hover {
-  color: #FFC107;
+  color: #5C4B99;
 }
 .logo{
-  width: 7rem;
+  width: 9rem;
 }
+
 </style>
