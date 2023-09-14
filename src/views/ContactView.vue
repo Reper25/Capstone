@@ -47,7 +47,7 @@ export default{
 </script>
 <style scoped>
 .thing{
- height: 80vh;
+ height: 62vh;
 }
 
 button {

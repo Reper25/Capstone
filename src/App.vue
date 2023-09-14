@@ -12,6 +12,12 @@ export default{
     Navbar,
     Footer
   },
+  created(){
+    const data = JSON.parse(localStorage.getItem("user"))
+    if(data){
+      this.$store.commit("setUser", data)
+    }
+  }
 };
 </script>
 

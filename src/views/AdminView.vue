@@ -35,7 +35,8 @@
               />
             </td>
             <td>
-              <updateUser :user="user" /><button
+              <UpdateUsers :user="user"/>
+              <button
                 class="btn"
                 @click="deleteUser(user.userID)"
               >
@@ -110,13 +111,13 @@ import AddUser from "@/components/AddUser.vue";
 import Spinner from "../components/SpinnerComp.vue";
 import addProduct from "../components/AddProduct.vue";
 import updateProduct from "../components/UpdateProduct.vue";
-import updateUsers from "../components/UpdateUsers.vue";
+import UpdateUsers from "../components/UpdateUsers.vue";
 export default {
   components: {
     Spinner,
     addProduct,
     updateProduct,
-    updateUsers,
+    UpdateUsers,
     AddUser
   },
   data() {

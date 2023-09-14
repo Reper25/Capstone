@@ -12,6 +12,7 @@ export default createStore({
     state: {
     users: null,
     user: null,
+    updates: null ,
     Products: null,
     product: null,
     spinner: null,
@@ -28,6 +29,9 @@ export default createStore({
     },
     setUser(state, user) {
       state.user = user;
+    },
+    setUpdates(state, updates) {
+      state.updates = updates
     },
     setProducts(state, products) {
       state.products = products;
@@ -80,19 +84,46 @@ export default createStore({
         context.commit("setMsg", "an error occured");
       }
     },
+    async updateDetails(context, payload){
+      try{
+        const res = await axios.patch(`${miniURL}user/${context.state.user.userID}`, payload)
+        console.log("Response: ", res)
+        console.log("Payload: :", payload)
+        const { msg, err } = res.data
+        if(err){
+          context.commit("setMsg", err)
+        }
+        if(msg){
+          context.dispatch("fetchUsers")
+          context.commit("setUser", payload)
+          localStorage.setItem("user", JSON.stringify(payload))
+          context.dispatch("fetchUser")
+          context.commit("setUpdates", msg)
+        }
+      } catch(e){
+
+      }
+    },
     async updateUser(context, payload) {
       try {
-        const res = await axios.put(`${baseUrl}user/${payload.userID}`, payload)
+        const res = await axios.put(`${miniURL}user/${payload.userID}`, payload)
         console.log('response:', res);
-        alert ('User was edited')
-        let { results, err } = await res.data;
-        if (results) {
-          context.commit('setuser', results[0])
-        } else {
-          context.commit('setResponse', err)
+        let { msg ,err } = await res.data;
+
+        console.log(context.state.user.userID)
+        if(payload.userID === context.state.user.userID){
+          localStorage.setItem("user", JSON.stringify(payload))
+          context.commit("setUser", payload)
         }
-      } catch(e) {
-        console.error(e);
+        if(msg === "User profile updated successfully."){
+          context.dispatch("fetchUsers")
+          localStorage.setItem("user", JSON.stringify(payload))
+        }
+        if(err){
+          context.commit("setMsg", err)
+        }
+      } catch (e) {
+        context.commit("setMsg", "an error occurred");
       }
     },
     async deleteUser(context, userID, payload) {

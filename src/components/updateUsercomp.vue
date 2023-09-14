@@ -6,7 +6,7 @@
         class="btn"
         @click="openEditModal(user.userID)"
         data-bs-toggle="modal"
-        :data-bs-target="'#texampleModal' + user.userID"
+        :data-bs-target="'#rexampleModal' + user.userID"
       >
         edit
       </button>
@@ -14,15 +14,15 @@
       <!-- Modal -->
       <div
         class="modal fade"
-        :id="'texampleModal' + user.userID"
+        :id="'rexampleModal' + user.userID"
         tabindex="-1"
-        :aria-labelledby="'texampleModalLabel' + user.userID"
+        :aria-labelledby="'rexampleModalLabel' + user.userID"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="texampleModalLabel3">
+              <h1 class="modal-title fs-5" id="rexampleModalLabel3">
                 Modal title
               </h1>
               <button
@@ -105,30 +105,21 @@
         editingUserID: null,
       };
     },
-    computed: {
-      currentUser() {
-        return this.$store.state.user;
-      },
-    },
     methods: {
       openEditModal(userID) {
         console.log("reached");
         this.editingUserID = userID;
-        this.editingUser = {
-          ...this.$store.state.users.find((user) => user.userID === userID),
-        };
       },
       updateProduct(userID) {
         this.$store
-          .dispatch("updateUser", {
-            userID: userID,
+          .dispatch("updateDetails", {
              ...this.editingUser,
           })
           .then(() => {
               console.log("user successfully updated");
-              setTimeout(() => {
-                location.reload();
-              }, 500);
+              // setTimeout(() => {
+              //   location.reload();
+              // }, 500);
             })
           .catch((err) => {
             console.error("Error updating: ", err);

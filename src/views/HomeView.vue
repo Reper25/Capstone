@@ -106,7 +106,7 @@ export default {
   background-color: #EEEDED !important;
 }
 .homeh{
-  background-image: url(https://i.postimg.cc/vHb8V72P/Nike-Air-Max-Day-2.jpg);
+  background: url(https://gifdb.com/images/high/nike-logo-led-light-flashing-1t6qanoqm20ta58w.gif);
   background-size: cover;
   background-position: center;
   height: 60vh;

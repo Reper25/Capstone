@@ -4,20 +4,12 @@
             <h2 class="class-display2 text-white">Menu</h2>
         </div>
 
-        <div class="row">
-                    <label for="Categories" class="my-1">Filter by: Artist</label>
-                </div>
-                <div class="row">
-                    <select v-model="artist" id="categories" name="Categories">
-                    <option value="sneakers">sneakers</option>
-                    <option value="hoodies">hoodies</option>
-                    <option value="Sanele Matsolo">Sanele Matsolo</option>
-                </select>
-                </div>
+        <select class="form-select m-auto sel" aria-label="Default select example" v-model="categoryFilter">
+              <option value="default">Filter/Default</option>
+              <option value="hoodies">Hoodies</option>
+              <option value="sneakers">Sneakers</option>
+            </select>
 
-                <div class="col-sm-2 mt-4">
-                <button class="fw-bold" @click="filter(products)">Filter</button>
-            </div>
 
         <div class="navigation">
     <div class="sort">
@@ -41,7 +33,7 @@
           type="text"
           class="type-s"
           placeholder="Name of item"
-          v-model="searchInput"
+          v-model="searchQuery"
         />
          
       </div>
@@ -68,6 +60,7 @@
 </template>
 <script>
 import Spinner from '../components/SpinnerComp.vue'
+
     export default {
       components:{
         Spinner
@@ -75,21 +68,21 @@ import Spinner from '../components/SpinnerComp.vue'
         data() {
   return {
     searchInput: "",
+    searchQuery: "",
+    categoryFilter:'default',
   };
 },
         computed: {
             products() {
                 return this.$store.state.products
             },  
-  filteredProducts() {
-    const searchQuery = this.searchInput.toLowerCase();
-    return this.products.filter(
-      (product) =>
-        product.prodName.toLowerCase().includes(searchQuery) ||
-        product.category.toLowerCase().includes(searchQuery)
+            filteredProducts() {
+    let filtered = this.$store.state.products.filter((products) =>
+      products.prodName.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
+      (this.categoryFilter === 'default' || products.category === this.categoryFilter)
     );
- 
-},
+    return filtered
+            }
         },
         mounted() {
             this.$store.dispatch('fetchProducts')
@@ -134,5 +127,9 @@ import Spinner from '../components/SpinnerComp.vue'
 }
 .card{
     margin-bottom:1rem ;
+}
+
+.sel{
+  width: 40%;
 }
 </style>

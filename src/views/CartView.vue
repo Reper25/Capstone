@@ -68,6 +68,7 @@
     width: 15%;
   }
   .opp{
-    height: 70vh;
+    height: max-content;
+    
   }
   </style>
