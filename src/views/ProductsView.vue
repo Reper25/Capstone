@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row">
             <h2 class="class-display2 text-black">Products</h2>
-          <!-- Poes select -->
           <div class="sep">
         <select class="form-select sel" aria-label="Default select example" v-model="categoryFilter">
                 <option value="default">Filter/Default</option>
@@ -64,10 +63,12 @@ required>
 </template>
 <script>
 import Spinner from '../components/SpinnerComp.vue'
+import sweet from 'sweetalert'
 
     export default {
       components:{
-        Spinner
+        Spinner,
+        sweet
       },
         data() {
   return {
@@ -114,8 +115,14 @@ import Spinner from '../components/SpinnerComp.vue'
           product.Category.toLowerCase().includes(searchQuery)
       );
     },
-    addToCart(product) {
+    addToCart(product, msg ) {
       this.$store.dispatch('addToCartAction', product);
+      sweet({
+            title: "Added to cart",
+            text: msg,
+            icon: "success",
+            timer: 4000,
+          });
     },
         }
     }

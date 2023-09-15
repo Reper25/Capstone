@@ -24,16 +24,16 @@
                 <router-link to="/admin">Admin</router-link>
             </li>
             <li class="nav-item m-2">
-                <router-link to="/login">login</router-link>
+                <router-link to="/login">Login</router-link>
             </li>
             <li class="nav-item m-2">
-                <router-link to="/register">register</router-link>
+                <router-link to="/register">Register</router-link>
             </li>
             <li class="nav-item m-2">
-                <router-link to="/cart">cart</router-link>
+                <router-link to="/profile">Profile</router-link>
             </li>
             <li class="nav-item m-2">
-                <router-link to="/profile">profile</router-link>
+                <router-link to="/cart"><b><i class="bi bi-cart"></i></b></router-link>
             </li>
            </ul>
         </div>
@@ -44,6 +44,7 @@
 
 <script>
 import { useCookies } from "vue3-cookies";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 const {cookies} = useCookies();
 export default {
   computed: {

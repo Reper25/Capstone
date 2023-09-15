@@ -12,23 +12,34 @@
           <p>Price: R{{ product.amount }}</p>
         </div>
       </div>
-      <div v-else>
-        
-      </div>
+      <button class="btn btn-primary" @click="addToCart(product)">Add to Cart</button>
+      
     </div>
     </center>
   </template>
   
   <script>
+    import sweet from 'sweetalert'
   export default {
     components: {
-    
+    sweet
     },
     computed: {
       product() {
         return this.$store.state.selectedProduct;
       },
     },
+    methods:{
+      addToCart(product, msg) {
+      this.$store.dispatch('addToCartAction', product);
+      sweet({
+            title: "Added to cart",
+            text: msg,
+            icon: "success",
+            timer: 4000,
+          });
+    },
+    }
   };
   </script>
   

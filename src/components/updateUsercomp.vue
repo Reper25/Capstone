@@ -3,7 +3,7 @@
       <!-- Button trigger modal -->
       <button
         type="button"
-        class="btn"
+        class="button"
         @click="openEditModal(user.userID)"
         data-bs-toggle="modal"
         :data-bs-target="'#rexampleModal' + user.userID"
@@ -57,12 +57,12 @@
                 placeholder="gender"
                 v-model="editingUser.gender"
               />
-              <label>user role:</label>
+              <!-- <label>user role:</label>
               <input
                 type="text"
                 placeholder="role"
                 v-model="editingUser.userRole"
-              />
+              /> -->
               <label>email address:</label>
               <input
                 type="text"
@@ -143,4 +143,33 @@
     align-items: center;
     margin-bottom: 7px;
   }
+
+  .button {
+ background-color: #eee;
+ border: none;
+ padding: 1rem;
+ font-size: 1rem;
+ width: 10em;
+ border-radius: 1rem;
+ color: lightcoral;
+ box-shadow: 0 0.4rem #dfd9d9;
+ cursor: pointer;
+}
+
+.button:active {
+ color: white;
+ box-shadow: 0 0.2rem #dfd9d9;
+ transform: translateY(0.2rem);
+}
+
+.button:hover:not(:disabled) {
+ background: lightcoral;
+ color: white;
+ text-shadow: 0 0.1rem #bcb4b4;
+}
+
+.button:disabled {
+ cursor: auto;
+ color: grey;
+}
   </style>

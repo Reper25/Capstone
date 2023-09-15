@@ -2,32 +2,69 @@
   <div class="container">
     <div class="col" v-if="user">
       <h1>Welcome Back To Your Profile</h1>
+      <div class="body">
+        <div class="col-lg-12">
       <img
         :src="user.userProfile"
         class="card-img-top img-fluid"
         :alt="user.firstName"
       />
-      <div class="body">
-        <br />
-        <span>User First Name:</span> {{ user.firstName }}
-        <br />
-        <span>User Last Name:</span> {{ user.lastName }}
-        <br />
-        <span>User Age:</span> {{ user.userAge }}
-        <br />
-        <span>User Gender:</span> {{ user.gender }}
-        <br />
-        <span>User Role:</span> {{ user.userRole }}
-        <br />
-        <span>User Email:</span> {{ user.emailAdd }}
-        <br />
-        <br />
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.firstName }} {{ user.lastName }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Age</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.userAge }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Gender</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.gender }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">User Role</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.userRole }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.emailAdd }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
-    <updateUsercomp :user="user"/>
-    <button class="btn" @click.prevent="LogOut">Logout</button>
-    <button class="btn" @click="deleteUser(user.userID)">delete</button>
+    </div>
+    <updateUsercomp :user="user"/> <br>
+    <button class="button" @click.prevent="LogOut">Logout</button>
+    <button class="button" @click="deleteUser(user.userID)">delete</button>
   </div>
+  <br>
 </template>
 
 <script>
@@ -92,9 +129,35 @@ export default {
 
 <style scoped>
 .card-img-top {
-  width: 15%;
+  width: 20%;
 }
-.container {
-  height: 65vh;
+
+button {
+ background-color: #eee;
+ border: none;
+ padding: 1rem;
+ font-size: 1rem;
+ width: 10em;
+ border-radius: 1rem;
+ color: lightcoral;
+ box-shadow: 0 0.4rem #dfd9d9;
+ cursor: pointer;
+}
+
+button:active {
+ color: white;
+ box-shadow: 0 0.2rem #dfd9d9;
+ transform: translateY(0.2rem);
+}
+
+button:hover:not(:disabled) {
+ background: lightcoral;
+ color: white;
+ text-shadow: 0 0.1rem #bcb4b4;
+}
+
+button:disabled {
+ cursor: auto;
+ color: grey;
 }
 </style>

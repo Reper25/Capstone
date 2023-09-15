@@ -2,7 +2,7 @@
     <div class="opp">
       <h1>Your Cart <i class="bi bi-basket"></i></h1>
       <center>
-        <div class="table-responsive">
+        <div class="table-responsive bg-white">
           <table class="table text-center table-bordered">
           <thead>
             <tr>
@@ -36,6 +36,8 @@
                 </td>
               </tr>
             </tbody>
+              <th scope="col" class="last">Amount Due:</th>
+               <th scope="col" class="last">R {{ totalAmount }}</th>
           </table>
         </div>
       </center>
@@ -47,6 +49,11 @@
       cart() {
         return this.$store.state.cart;
       },
+      totalAmount() {
+      return this.cart.reduce((total, item) => {
+        return total + item.amount;
+      }, 0);
+      }
     },
     methods: {
       removeFromCart(index) {
