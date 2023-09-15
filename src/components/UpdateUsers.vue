@@ -22,7 +22,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="texampleModalLabel3">
+              <h1 class="modal-title fs-5" id="texampleModalLabel">
                 Modal title
               </h1>
               <button

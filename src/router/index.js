@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import {useCookies} from 'vue3-cookies'
+const {cookies} = useCookies()
 
 const routes = [
   {
@@ -20,12 +22,22 @@ const routes = [
   {
     path: '/product',
     name: 'product',
-    component: () => import('../views/ProductsView.vue')
+    component: () => import('../views/ProductsView.vue'),
+    beforeEnter() {
+      if (!cookies.get('LegitUser')) {
+        router.push({ name: 'login' })
+        }
+    }
   },
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/AdminView.vue')
+    component: () => import('../views/AdminView.vue'),
+    beforeEnter() {
+      if (!cookies.get('LegitUser')) {
+        router.push({ name: 'login' })
+        }
+    },
   },
   {
     path: '/login',
@@ -40,12 +52,22 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: () => import('../views/CartView.vue')
+    component: () => import('../views/CartView.vue'),
+    beforeEnter() {
+      if (!cookies.get('LegitUser')) {
+        router.push({ name: 'login' })
+        }
+    },
   },
   {
     path: '/profile',
     name: 'profile',
-    component: () => import('../views/ProfileView.vue')
+    component: () => import('../views/ProfileView.vue'),
+    beforeEnter() {
+      if (!cookies.get('LegitUser')) {
+        router.push({ name: 'login' })
+        }
+    },
   },
   {
     path: '/product/:prodID',

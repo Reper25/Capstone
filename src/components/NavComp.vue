@@ -20,7 +20,7 @@
             <li class="nav-item m-2">
               <router-link to="/contact">Contact</router-link>
             </li>
-            <li class="nav-item m-2">
+            <li class="nav-item m-2" v-if="user ? user.userRole === 'admin' : null">
                 <router-link to="/admin">Admin</router-link>
             </li>
             <li class="nav-item m-2">
@@ -43,9 +43,22 @@
 </template>
 
 <script>
-export default{
-
-}
+import { useCookies } from "vue3-cookies";
+const {cookies} = useCookies();
+export default {
+  computed: {
+    user() {
+      return this.$store.state.user ||
+      cookies.get('user')
+    },
+    result() {
+      return this.user?.result
+    },
+    isAdmin() {
+      return this.result?.userRole?.toLowerCase() === "admin"
+    }
+  }
+};
 </script>
 
 <style scoped>

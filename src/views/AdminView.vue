@@ -90,7 +90,7 @@
                 />
               </td>
               <td>
-                <updateProduct :product="product" />
+                <UpdateProduct :product="product" />
                 <button @click="deleteProduct(product.prodID)" class="btn">
                   delete
                 </button>
@@ -109,14 +109,14 @@
 <script>
 import AddUser from "@/components/AddUser.vue";
 import Spinner from "../components/SpinnerComp.vue";
-import addProduct from "../components/AddProduct.vue";
-import updateProduct from "../components/UpdateProduct.vue";
+import AddProduct from "../components/AddProduct.vue";
+import UpdateProduct from "../components/UpdateProduct.vue";
 import UpdateUsers from "../components/UpdateUsers.vue";
 export default {
   components: {
     Spinner,
-    addProduct,
-    updateProduct,
+    AddProduct,
+    UpdateProduct,
     UpdateUsers,
     AddUser
   },

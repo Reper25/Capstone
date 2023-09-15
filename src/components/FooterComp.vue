@@ -6,32 +6,34 @@
     <div class="row">
       <!--Grid column-->
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Footer Content</h5>
+        <h5 class="text-uppercase">Walk In Wonder</h5>
 
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-          molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-          voluptatem veniam, est atque cumque eum delectus sint!
+          Location:<br>
+789 Epicurean Avenue
+Metropolis City, Gourmet County<br>
+Phone: (555) 123-4567<br>
+Website: www.walkinwonder.com
         </p>
       </div>
       <!--Grid column-->
 
       <!--Grid column-->
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Links</h5>
+        <h5 class="text-uppercase">Social Media</h5>
 
         <ul class="list-unstyled mb-0">
           <li>
-            <a href="#!" class="text-black">Link 1</a>
+            <a href="https://www.instagram.com/!" class="text-black">Instagram</a>
           </li>
           <li>
-            <a href="#!" class="text-black">Link 2</a>
+            <a href="https://twitter.com/!" class="text-black">Twitter</a>
           </li>
           <li>
-            <a href="#!" class="text-black">Link 3</a>
+            <a href="https://www.facebook.com/!" class="text-black">Facebook</a>
           </li>
           <li>
-            <a href="#!" class="text-black">Link 4</a>
+            <a href="https://www.tiktok.com/!" class="text-black">Tik Tok</a>
           </li>
         </ul>
       </div>
@@ -39,20 +41,20 @@
 
       <!--Grid column-->
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-0">Links</h5>
+        <h5 class="text-uppercase mb-0">Pages</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!" class="text-black">Link 1</a>
+            <a href="/" class="text-black">Home</a>
           </li>
           <li>
-            <a href="#!" class="text-black">Link 2</a>
+            <a href="/about" class="text-black">About</a>
           </li>
           <li>
-            <a href="#!" class="text-black">Link 3</a>
+            <a href="/product" class="text-black">Products</a>
           </li>
           <li>
-            <a href="#!" class="text-black">Link 4</a>
+            <a href="/contact" class="text-black">Contact</a>
           </li>
         </ul>
       </div>
