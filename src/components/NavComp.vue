@@ -2,7 +2,7 @@
     <div>
    <nav class="navbar navbar-expand-lg sticky-bottom">
       <div class="container-fluid">
-        <router-link to="/"><img src="https://i.postimg.cc/4yMCrmmK/Screenshot-2023-09-13-141248-removebg-preview.png" alt="LOGO" loading="lazy" class="logo"></router-link>
+        <router-link to="/"><img src="https://i.postimg.cc/KzFvCJ1q/walk-removebg-preview.png" alt="LOGO" loading="lazy" class="logo"></router-link>
         <button class="navbar-toggler bg-light food" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -80,7 +80,7 @@ nav ul li a:hover {
   color: #5C4B99;
 }
 .logo{
-  width: 9rem;
+  width: 4rem;
 }
 
 </style>
